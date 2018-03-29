@@ -29,7 +29,7 @@ public class EnemyDamage : MonoBehaviour {
     {
         if (!_isDestroyed) {
             //normal bullet
-            if (other.gameObject.tag == "bullet")
+            if (other.gameObject.tag == "Player")
             {
                 _EnemyHealth--;
             }
