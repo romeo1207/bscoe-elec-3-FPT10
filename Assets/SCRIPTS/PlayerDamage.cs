@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerDamage : MonoBehaviour {
 
     public ParticleSystem _ParticleDamaged;
@@ -20,7 +21,7 @@ public class PlayerDamage : MonoBehaviour {
         _PlayerHealth = 10;
         _PlayerHealthWheel.maxValue = _PlayerHealth;
         _isDamaged = false;
-        _isDestroyed = false;
+        _isDestroyed = false;        
         _ParticleDamaged.Stop();
         _ParticleDestroyed.Stop();
     }
@@ -32,8 +33,8 @@ public class PlayerDamage : MonoBehaviour {
 
     IEnumerator ExecuteAfterTime()
     {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("level1");
+        yield return new WaitForSeconds(2);
+        _isDestroyed = true;
     }
 
     public void OnParticleCollision(GameObject other)
@@ -62,6 +63,7 @@ public class PlayerDamage : MonoBehaviour {
                 Destroy(GameObject.FindWithTag("Player"), 1f);
                 _SFXExplotion.Play();
                 _ParticleDestroyed.Play();
+                
                 StartCoroutine("ExecuteAfterTime");
             }
         }

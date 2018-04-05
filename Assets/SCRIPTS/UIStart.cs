@@ -19,6 +19,6 @@ public class UIStart : MonoBehaviour {
 
     void LoadGameScene()
     {
-        SceneManager.LoadScene("level2");
+        SceneManager.LoadScene("level1");
     }
 }
